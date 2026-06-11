@@ -27,7 +27,34 @@ def health_check() -> str:
         messages=[
             {
                 "role": "user",
-                "content": "Respond with only: KDTech Sentinel Onliine",
+                "content": "Respond with only: KDTech Sentinel Online",
+            }
+        ],
+    )
+
+    content = response.choices[0].message.content
+
+    if content is None:
+        raise ValueError("Qwen returned an empty response")
+    return content
+
+
+def ask_qwen(prompt: str) -> str:
+    """
+    Send a prompt to Qwen Cloud.
+
+    Args:
+        prompt: User prompt.
+
+    Returns:
+        Generated response.
+    """
+    response = client.chat.completions.create(
+        model=QWEN_MODEL,
+        messages=[
+            {
+                "role": "user",
+                "content": prompt,
             }
         ],
     )
