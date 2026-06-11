@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# QWEN API
+QWEN_API_KEY=sk-ws-H.ILEPYD.sE7E.MEUCIEIlRVChE6vwwSXyUtLsuNzgj07m9tMoRBiy406rGz2DAiEAueZyAbIkzQ3nWgC_C7OqvUjcOSxWQwnY6ENh_W_SmtM
