@@ -5,22 +5,12 @@ Provides connectivity and health checks against
 the configured Qwen model.
 """
 
-import os
-
-from dotenv import load_dotenv
 from openai import OpenAI
+from src.core.config import QWEN_API_KEY, QWEN_MODEL
 
-
-load_dotenv()
-
-
-api_key = os.getenv("QWEN_API_KEY")
-
-if api_key is None:
-    raise ValueError("QWEN_API_KEY environment variable not found")
 
 client = OpenAI(
-    api_key=api_key,
+    api_key=QWEN_API_KEY,
     base_url="https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
 )
 
@@ -33,7 +23,7 @@ def health_check() -> str:
         Model response string.
     """
     response = client.chat.completions.create(
-        model="qwen-plus",
+        model=QWEN_MODEL,
         messages=[
             {
                 "role": "user",
